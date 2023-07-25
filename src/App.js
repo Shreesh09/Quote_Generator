@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+class App extends React.Component
+{
+    constructor(props) {
+        super(props);
+        this.state = {
+            input: '',
+        }
+    }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    handleChange = (event) => {
+        this.setState({input: event.target.value});
+}
+
+    handleSubmit = () => {
+        this.setState((oldState, props) => {
+            props.submitMessage(oldState.input);
+            return({input: ""});
+        })
+    }
+
+    render(){
+        return (
+          <div>
+              <h2>Hit Submit To display your message</h2>
+              <input value={this.state.input} onChange={this.handleChange} />
+              <button onClick={this.handleSubmit}>SUBMIT</button>
+              <h3>Your messages:</h3>
+              <ul>
+                  {
+                      this.props.messages.map(
+                          (message, id) => (<li key={id}>{message}</li>))
+                  }
+              </ul>
+          </div>
+        );
+    }
 }
 
 export default App;

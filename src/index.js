@@ -1,14 +1,16 @@
 import React from 'react';
+import { Provider, connect } from 'react-redux';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {store, passActionsToProps, passStateToProps} from "./Redux/state_management";
+const Container = connect(passStateToProps, passActionsToProps)(App);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <Provider store={store}>
+      <Container/>
+    </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
