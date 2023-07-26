@@ -1,10 +1,15 @@
 import * as constans from "./action_constants";
 
-const addMessage = (message) => ({
-    type: constans.ADD,
-    message: message,
+const fetchingQuote = () => ({
+    type: constans.FETCHING,
 });
 
-export {addMessage};
+const fetchedQuote = (quote) => ({
+    type: constans.FETCHED,
+    quote: quote.content,
+    author: quote.author
+})
+
+export {fetchingQuote, fetchedQuote};
 
 

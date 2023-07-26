@@ -1,10 +1,10 @@
 import React from 'react';
 import { Provider, connect } from 'react-redux';
 import ReactDOM from 'react-dom/client';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {store, passActionsToProps, passStateToProps} from "./Redux/state_management";
-const Container = connect(passStateToProps, passActionsToProps)(App);
+import Quote from "./Quote/quote";
+const Container = connect(passStateToProps, passActionsToProps)(Quote);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
